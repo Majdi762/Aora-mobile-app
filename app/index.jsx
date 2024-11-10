@@ -3,8 +3,14 @@ import { Text, View, ScrollView, Image } from 'react-native';
 import { Redirect, router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {images} from '../constants'
-import CustomButton from './components/CustomButton';
+import CustomButton from '../components/CustomButton';
+import 'react-native-url-polyfill/auto'
+import { useGlobalContext } from '../context/GlobalProvider';
+
 export default function App() {
+  const { loading, isLogged } = useGlobalContext();
+
+  if (!loading && isLogged) return <Redirect href="/home" />;
   return (
     //to be sure that all content will be visible on all deffirent devices 
     <SafeAreaView className="bg-primary h-full">

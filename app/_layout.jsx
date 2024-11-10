@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import {Text, View } from 'react-native'
 import "../global.css";
 import { Slot, SplashScreen, Stack } from 'expo-router'
 import { useFonts} from 'expo-font' // to import all fonts
-import { useEffect } from 'react';
+import GlobalProvider from '../context/GlobalProvider';
 
 SplashScreen.preventAutoHideAsync();
 const Root_Layout = () => {
@@ -26,12 +27,16 @@ const Root_Layout = () => {
 
   if (!fontsLoaded && !error) return null;
   return (
+
+  <GlobalProvider>
+     {/* to send all data of the context to all screens */}
     <Stack>
       <Stack.Screen name='index' options={{headerShown: false }} />
       <Stack.Screen name='(auth)' options={{headerShown: false }} />
       <Stack.Screen name='(tabs)' options={{headerShown: false }} />
-      {/* <Stack.Screen name='search/[query]' options={{headerShown: false }} /> */}
+      <Stack.Screen name='search/[query]' options={{headerShown: false }} />
     </Stack>
+  </GlobalProvider>   
   )
 }
 
