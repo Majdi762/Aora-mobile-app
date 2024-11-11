@@ -45,7 +45,7 @@ const SignIn = () => {
         <View className="w-full justify-center min-h-[85vh] px-5 my-6">
           <Image
              source={images.logo}
-             resizeMethod='contain'
+             resizeMethode='contain'
              className="w-[115px] h-[35px]"
           />
  
